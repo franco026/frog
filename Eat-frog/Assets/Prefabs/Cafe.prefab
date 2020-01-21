@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3392152123180415123}
   - component: {fileID: 4965577664853148344}
   - component: {fileID: 3514704090401303281}
-  - component: {fileID: 6069103991129356242}
   - component: {fileID: 2628710949220892797}
   - component: {fileID: 8666178395066034340}
+  - component: {fileID: 2787550418282124416}
   m_Layer: 0
   m_Name: Cafe
   m_TagString: Cafe
@@ -49,6 +49,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -106,39 +107,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &6069103991129356242
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 850954563412679866}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 0.64, y: 0.64}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.00068569183, y: 0.3369461}
-      - {x: -0.31521678, y: 0.27513182}
-      - {x: -0.47146618, y: 0.0706487}
-      - {x: -0.28599656, y: -0.12431422}
-      - {x: -0.061154842, y: 0.06115526}
-      - {x: 0.29754746, y: -0.044831097}
-      - {x: 0.35461533, y: 0.24047989}
-      - {x: 0.1725471, y: 0.40828052}
 --- !u!114 &2628710949220892797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,3 +138,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!61 &2787550418282124416
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 850954563412679866}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.072462946, y: 0.16907907}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 0.64, y: 0.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8567007, y: 0.4380288}
+  m_EdgeRadius: 0

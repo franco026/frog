@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class createinsect : MonoBehaviour
 {
-    public BeeManager insects;
-    private GameObject bees;
+    public GameObject[] bees;
     public GameObject frog;
-
-    private int numb;
+    private int cont;
+    
     public float tiempocreate = 2f, rango = 2f;
     // Start is called before the first frame update
 
@@ -28,21 +27,26 @@ public class createinsect : MonoBehaviour
         spawsposition = this.transform.position + Random.onUnitSphere * rango;
         spawsposition = new Vector3(this.transform.position.x,spawsposition.y,0);
         if(frog.transform.position.y+1 <= spawsposition.y){
-            GameObject insecto = Instantiate(GetGameObject(), spawsposition, Quaternion.identity);
+            cont+=1;
+            if(cont ==5){
+                foreach (GameObject obj in bees ){
+                    if (obj.tag=="Mariposa"){
+                       GameObject butterfly = Instantiate(obj, spawsposition, Quaternion.identity);
+                    }
+                }   
+            }else{
+                if(cont==10){
+                        foreach (GameObject obj in bees ){
+                            if (obj.tag=="Mariposa_dorada"){
+                            GameObject butterfly = Instantiate(obj, spawsposition, Quaternion.identity);
+                        }
+                    }
+                }else{
+                     GameObject insecto = Instantiate(bees[Random.Range(0,bees.Length)], spawsposition, Quaternion.identity);
+                }
+            }
+            
         }
-
-        
     }
-
-    private GameObject GetGameObject(){
-        numb  = Random.Range(0,2);
-        print(numb);
-        if(numb == 1){
-            return insects.Negra;
-        }else{
-            return insects.Cafe;
-        }
-    }
-
    
 }

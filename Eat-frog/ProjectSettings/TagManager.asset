@@ -8,6 +8,11 @@ TagManager:
   - Cafe
   - Negra
   - lengua
+  - Mariposa
+  - Mariposa_dorada
+  - Mariposa_blanca
+  - Blanca
+  - Frog
   layers:
   - Default
   - TransparentFX

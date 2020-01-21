@@ -8,16 +8,20 @@ public class FrogController : MonoBehaviour
     // Start is called before the first frame update
    
     public float distancia = 10f;
+    public GameObject camaraover,live,liveup;
 
     public float maxhealth = 100f;
-    float curhealth;
+    public float curhealth;
+    private ControlScore control;
 
 
-    public Image health;
+    public Image healthlive, healthliveup;
     
     public GameObject len;
-    private bool lol,ll,move;
+    private bool lol,ll;
+    public bool notoco,LiveMAx,move;
     private float angle;
+    public int vel_lengua;
     public int con;
     public string obe;
     private Vector3 lookPos;
@@ -32,12 +36,12 @@ public class FrogController : MonoBehaviour
 
     private estirolengua estiro;
     
-    private Objectivo objectivo;
+
 
      void Awake()
     {
-        objectivo = FindObjectOfType<Objectivo>();
         estiro = GetComponent<estirolengua>();
+        control = FindObjectOfType<ControlScore>();
     }
 
     void Start()
@@ -50,9 +54,12 @@ public class FrogController : MonoBehaviour
         animator = GetComponent<Animator>();
         animator.SetBool("Volver",false);
         curhealth = maxhealth;
-        health.fillAmount = curhealth/maxhealth;
+        healthlive.fillAmount = curhealth/maxhealth;
+        notoco = false;
+        LiveMAx = false;
         //lineRenderer.enabled = false;  
         lol = true;
+        vel_lengua = 20;
     }
 
     // Update is called once per frame
@@ -61,25 +68,23 @@ public class FrogController : MonoBehaviour
         Getinput();
         movelengua();
         healthmin();
+        FrogHungry();
+    }
+
+    void FrogHungry(){
+        if(curhealth <= 0){
+           // camaraover.SetActive(true);
+        }
     }
 
     void healthmin(){
+        if((curhealth/maxhealth) > 1.1f){
+            curhealth = 100f;
+            healthlive.fillAmount = curhealth/maxhealth;
+            return;
+        }
         curhealth -= 0.1f;
-        health.fillAmount = curhealth/maxhealth;
-        if(obe == objectivo.objet){
-            curhealth += 10f;
-            health.fillAmount = curhealth/maxhealth;
-        }
-    }
-
-       void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.gameObject.tag == "Negra" || other.gameObject.tag == "Cafe"){   
-                move = false;
-                obe = other.gameObject.tag;
-                con = 1;
-        }
-      
+        healthlive.fillAmount = curhealth/maxhealth;
     }
 
 
@@ -116,9 +121,9 @@ public class FrogController : MonoBehaviour
             estiro.RenderLine(temp, false);
             len.GetComponent<SpriteRenderer>().sortingOrder = 2;
             if(move){
-                temp += len.transform.up * Time.deltaTime *20;
+                temp += len.transform.up * Time.deltaTime *vel_lengua;
             }else{
-                temp -= len.transform.up * Time.deltaTime *20;
+                temp -= len.transform.up * Time.deltaTime *vel_lengua;
                 
             }
 
@@ -127,6 +132,7 @@ public class FrogController : MonoBehaviour
             if(temp.y >= lengua.y){
                 move = false;
                 con = 1;
+                notoco = true;
             }
             if(temp.y <= transform.position.y){
                 len.transform.position=transform.position;
@@ -135,6 +141,7 @@ public class FrogController : MonoBehaviour
                 len.GetComponent<SpriteRenderer>().sortingOrder = 0;
                 lol = true;
                 con = 0;
+                notoco = false;
             }
             estiro.RenderLine(temp, true);
         }
